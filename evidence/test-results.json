@@ -1,0 +1,23 @@
+{
+  "errors": [],
+  "desktopOverflow": false,
+  "exportName": "pro-violet.svg",
+  "reset": {
+    "blur": 7.3,
+    "grain": 0.12,
+    "period": 4.4,
+    "palette": "original",
+    "stage": 5,
+    "warp": 0,
+    "light": 0,
+    "intro": true
+  },
+  "pauseHolds": true,
+  "scrubTime": 2.1199989318847656,
+  "replayAdvances": true,
+  "mobileOverflow": false,
+  "reducedMotionPaused": true,
+  "reducedMotionPoster": "http://127.0.0.1:8765/outputs/pro-svg-lab/pro-static.svg",
+  "nativeSvgNoJS": "captured before/after; compare image pixels separately",
+  "nativeNoJsMeanAbsolutePixelChange": 11.416940625
+}

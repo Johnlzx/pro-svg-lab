@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10121b">
+  <title>PRO · SVG 材质实验室</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="renderer.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+  <header class="masthead"><a class="wordmark" href="#">PRO<span> / SVG LAB</span></a><nav aria-label="页面导航"><a href="#lab">实验</a><a href="#mechanism">原理</a><a href="#reference">对照</a><a href="analysis.md">研究笔记 ↗</a></nav><span class="edition">MATERIAL STUDY — 001</span></header>
+  <main>
+    <section id="lab" class="laboratory" aria-labelledby="lab-title">
+      <div class="intro"><div><p class="eyebrow">VECTOR GEOMETRY. COMPUTED MATERIAL.</p><h1 id="lab-title">一条路径，流动的材质。</h1></div><p class="intro-note">拆开一个看似液态金属的字。<br>让灰度、色谱与时间自己说话。</p></div>
+      <div class="workspace">
+        <div class="viewer">
+          <div class="canvas-meta"><span id="stage-label">06 / 色谱映射</span><span id="render-tag">SVG + SMIL · 原生循环</span></div>
+          <div id="art" class="art" aria-live="off"><picture><source media="(prefers-reduced-motion: reduce)" srcset="pro-static.svg"><img src="pro.svg" alt="PRO 的彩色材质动效"></picture></div>
+          <div class="canvas-caption"><span id="stage-caption">深蓝 → 青 → 奶黄 → 橙红 → 洋红 → 白</span><span class="tiny-cross" aria-hidden="true">+</span></div>
+          <div class="transport"><button id="play" class="icon-button" aria-label="暂停动画">Ⅱ</button><button id="replay" class="icon-button" aria-label="从头重播">↺</button><label for="time" class="sr-only">循环时间</label><input id="time" type="range" min="0" max="4.4" step=".01" value="0"><output id="clock" for="time" aria-live="off">0.00 / 4.40s</output></div>
+          <div class="stage-tabs" role="group" aria-label="查看滤镜中间结果">
+            <button data-stage="0"><b>01</b>字形</button><button data-stage="1"><b>02</b>轮廓</button><button data-stage="2"><b>03</b>扫描</button><button data-stage="3"><b>04</b>模糊</button><button data-stage="4"><b>05</b>颗粒</button><button data-stage="5" aria-pressed="true"><b>06</b>色谱</button>
+          </div>
+        </div>
+        <aside class="inspector" aria-label="材质参数">
+          <div class="inspector-top"><h2>材质参数</h2><button id="reset" class="text-button">还原</button></div>
+          <fieldset class="palette-field"><legend>色谱 / PALETTE</legend><div class="swatches"><button data-palette="original" aria-pressed="true"><i class="original"></i>原作色谱</button><button data-palette="silver"><i class="silver"></i>冷银</button><button data-palette="lava"><i class="lava"></i>熔岩</button><button data-palette="violet"><i class="violet"></i>电离紫</button></div></fieldset>
+          <div class="control"><label for="blur">边缘柔度 <output id="blur-value">7.3</output></label><input id="blur" type="range" min="1" max="13" step=".1" value="7.3"><small>模糊越大，色带越宽，字腔越软。</small></div>
+          <div class="control"><label for="grain">颗粒强度 <output id="grain-value">0.12</output></label><input id="grain" type="range" min="0" max=".28" step=".01" value=".12"></div>
+          <div class="control"><label for="period">循环时长 <output id="period-value">4.4s</output></label><input id="period" type="range" min="2" max="9" step=".1" value="4.4"></div>
+          <details class="extensions"><summary>进一步实验 <span>+</span></summary><p>以下为新增效果，可与复现叠加。</p><div class="control"><label for="warp">流体置换 <output id="warp-value">0</output></label><input id="warp" type="range" min="0" max="28" step="1" value="0"></div><div class="control"><label for="light">浮雕光照 <output id="light-value">0</output></label><input id="light" type="range" min="0" max="2" step=".1" value="0"></div><label class="check"><input id="intro-toggle" type="checkbox" checked> 首次播放渐进揭示</label></details>
+          <button id="download" class="download">导出当前 SVG <span>↓</span></button><p class="export-note">完整材质 · 原生动画 · 可独立打开<br>导出从头播放，保留当前材质参数。</p>
+        </aside>
+      </div>
+      <p class="under-note"><span id="status" role="status">根据公开实现重建 · 字形与色表重新编写</span><span>NO CANVAS / NO WEBGL / NO VIDEO TEXTURE</span></p>
+    </section>
+
+    <section id="mechanism" class="explanation">
+      <div class="section-lead"><p class="eyebrow">01 / THE MECHANISM</p><h2>颜色没有流动。<br>流动的是颜色的输入。</h2><p>把字母当作一张地形图：轮廓决定地形，移动的灰度渐变改变“海拔”，查找表负责把每个高度染成不同颜色。</p></div>
+      <div class="essay">
+        <article><span class="number">A</span><div><h3>先制造连续的灰度场</h3><p>字形透明度经过三个尺度的模糊与相减，得到宽窄不同的内边缘。叠加后，平面字形拥有了柔和的明暗坡度。这里的“浮雕”来自计算，并没有三维模型。</p><code>SourceAlpha → blur → subtract → merge</code></div></article>
+        <article><span class="number">B</span><div><h3>让斜向扫描改变这个场</h3><p>一个倾斜 −35° 的重复灰度渐变持续平移。它叠在轮廓上，亮的区域逐渐变白，暗的区域恢复深色。轮廓不动，也会产生软化、熔融和重新凝结的错觉。</p><code>linearGradient + animateTransform → overlay</code></div></article>
+        <article><span class="number">C</span><div><h3>把亮度当作色谱的索引</h3><p>最终模糊把明暗连成平滑过渡，细噪声打散过于光滑的色带。三个通道各查一次表：同一个灰度值被翻译成 R、G、B，形成沿边缘生长的彩色等高线。</p><code>feComponentTransfer → feFuncR / G / B</code></div></article>
+        <div class="spectrum"><div class="spectrum-bar"></div><div><span>较暗 / 0</span><span>灰度输入 → 颜色输出</span><span>较亮 / 1</span></div></div>
+        <p class="important">把柔度设为 1，再慢慢拉到 13：你会直接看到，模糊不是丢失细节，而是在生成材质需要的连续空间。</p>
+      </div>
+    </section>
+
+    <section id="reference" class="reference">
+      <div class="section-header"><div><p class="eyebrow">02 / THE REFERENCE</p><h2>回到原始画面。</h2></div><p>左侧为原视频，右侧为独立 SVG。<br>字形略有差异；滤镜机制与 4.4 秒循环依据公开实现。</p></div>
+      <div class="comparison"><figure><div class="video-crop"><video id="reference-video" controls playsinline preload="metadata" src="assets/refero-pro-animation.mp4"></video></div><figcaption><span>ORIGINAL / Mike Bespalov</span><a href="https://x.com/bbssppllvv/status/2104747296671883312" target="_blank" rel="noreferrer">原帖 ↗</a></figcaption></figure><figure><div class="replica-poster"><picture><source media="(prefers-reduced-motion: reduce)" srcset="pro-static.svg"><img src="pro.svg" alt="独立运行的 PRO SVG 动画" loading="lazy"></picture><p>同一种机制，重新编写。</p></div><figcaption><span>RECONSTRUCTION / SVG</span><a href="pro.svg" download>独立 SVG ↓</a></figcaption></figure></div>
+    </section>
+
+    <section class="limits"><p class="eyebrow">03 / WHAT SVG REALLY BUYS YOU</p><div><h2>小的是描述，<br>不是计算量。</h2><p>SVG 的潜力在于组合：几何、遮罩、模糊、颜色、置换与时间，可以组成一条可编辑的图像处理链。用少量描述生成持续变化的画面，是它远超静态图标的地方。</p><p>滤镜阶段仍要栅格化。大尺寸、多个噪声层和宽滤镜区域会增加每帧开销；没有 JavaScript，并不意味着没有渲染成本。实验室把置换与光照作为可选扩展，默认保留原作的简洁结构。</p><a class="notes-link" href="analysis.md">阅读逐帧分析、公式与实现说明 ↗</a></div></section>
+  </main>
+  <footer><span>PRO / SVG MATERIAL STUDY</span><p>灵感与原作：Mike Bespalov / Refero · 本页为技术研究与独立复现。</p><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/feComponentTransfer" target="_blank" rel="noreferrer">SVG 文档 ↗</a></footer>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-18 -24 373 177" width="746" height="354" role="img" aria-label="PRO — animated SVG material" data-material="lava">
+  <title>PRO · SVG material study</title>
+  <desc>Independent recreation inspired by Mike Bespalov / Refero. Native SVG filters and SMIL. No JavaScript, video or canvas needed by this image.</desc>
+  <defs>
+    <path id="pro-letters" d="M0 3H59C86 3 101 16 101 42C101 67 86 81 59 81H30V126H0ZM30 28V56H52C64 56 70 52 70 42C70 32 64 28 52 28Z M108 3H166C194 3 210 15 210 38C210 54 201 65 185 69C202 73 207 88 208 110C209 119 209 123 212 125V126H180C177 122 179 101 174 92C171 86 166 83 158 83H139V126H108ZM139 28V58H160C173 58 180 53 180 43C180 33 173 28 160 28Z M275 0C314 0 337 26 337 64C337 103 314 129 275 129C237 129 214 103 214 64C214 26 237 0 275 0ZM275 25C255 25 245 39 245 64C245 90 255 104 275 104C295 104 306 90 306 64C306 39 295 25 275 25Z" fill-rule="evenodd"/>
+    <linearGradient id="pro-sweep" gradientUnits="userSpaceOnUse" x1="0" y1="64" x2="486" y2="64" spreadMethod="repeat" gradientTransform="rotate(-35 168 64)">
+      <stop offset="0" stop-color="rgb(255,255,255)"/><stop offset="0.0625" stop-color="rgb(234,234,234)"/><stop offset="0.125" stop-color="rgb(180,180,180)"/><stop offset="0.1875" stop-color="rgb(113,113,113)"/><stop offset="0.25" stop-color="rgb(55,55,55)"/><stop offset="0.3125" stop-color="rgb(19,19,19)"/><stop offset="0.375" stop-color="rgb(4,4,4)"/><stop offset="0.4375" stop-color="rgb(0,0,0)"/><stop offset="0.5" stop-color="rgb(0,0,0)"/><stop offset="0.5625" stop-color="rgb(0,0,0)"/><stop offset="0.625" stop-color="rgb(4,4,4)"/><stop offset="0.6875" stop-color="rgb(19,19,19)"/><stop offset="0.75" stop-color="rgb(55,55,55)"/><stop offset="0.8125" stop-color="rgb(113,113,113)"/><stop offset="0.875" stop-color="rgb(180,180,180)"/><stop offset="0.9375" stop-color="rgb(234,234,234)"/><stop offset="1" stop-color="rgb(255,255,255)"/>
+      <animateTransform attributeName="gradientTransform" type="translate" from="109 0" to="595 0" dur="4.4s" repeatCount="indefinite" additive="sum"/>
+    </linearGradient>
+    <linearGradient id="pro-reveal" gradientUnits="userSpaceOnUse" x1="-243" y1="64" x2="0" y2="64" gradientTransform="rotate(-35 168 64)">
+      <stop offset="0" stop-color="white" stop-opacity="0"/><stop offset="0.0625" stop-color="white" stop-opacity="0"/><stop offset="0.125" stop-color="white" stop-opacity="0.0008"/><stop offset="0.1875" stop-color="white" stop-opacity="0.0043"/><stop offset="0.25" stop-color="white" stop-opacity="0.0146"/><stop offset="0.3125" stop-color="white" stop-opacity="0.0366"/><stop offset="0.375" stop-color="white" stop-opacity="0.0753"/><stop offset="0.4375" stop-color="white" stop-opacity="0.135"/><stop offset="0.5" stop-color="white" stop-opacity="0.2176"/><stop offset="0.5625" stop-color="white" stop-opacity="0.3221"/><stop offset="0.625" stop-color="white" stop-opacity="0.4439"/><stop offset="0.6875" stop-color="white" stop-opacity="0.5753"/><stop offset="0.75" stop-color="white" stop-opacity="0.7058"/><stop offset="0.8125" stop-color="white" stop-opacity="0.8239"/><stop offset="0.875" stop-color="white" stop-opacity="0.9182"/><stop offset="0.9375" stop-color="white" stop-opacity="0.979"/><stop offset="1" stop-color="white" stop-opacity="1"/>
+      <animateTransform attributeName="gradientTransform" type="translate" from="109 0" to="594 0" dur="4.390000000000001s" fill="freeze" additive="sum"/>
+    </linearGradient>
+    <filter id="pro-relief" x="0" y="0" width="337" height="129" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hard"/>
+
+      <feGaussianBlur in="hard" stdDeviation="1.5" result="blur0"/>
+      <feComposite in="blur0" in2="hard" operator="arithmetic" k2="-1" k3="1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.43 0" result="rim0"/>
+      <feGaussianBlur in="hard" stdDeviation="4.5" result="blur1"/>
+      <feComposite in="blur1" in2="hard" operator="arithmetic" k2="-1" k3="1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.67 0" result="rim1"/>
+      <feGaussianBlur in="hard" stdDeviation="9.5" result="blur2"/>
+      <feComposite in="blur2" in2="hard" operator="arithmetic" k2="-1" k3="1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.73 0" result="rim2"/>
+      <feMerge><feMergeNode in="rim0"/><feMergeNode in="rim1"/><feMergeNode in="rim2"/></feMerge>
+      <feColorMatrix values="0 0 0 -1 1 0 0 0 -1 1 0 0 0 -1 1 0 0 0 0 1" result="contour"/>
+      <feFlood flood-color="#9d9d9d"/>
+      <feComposite in2="contour" operator="arithmetic" k2="1" k3=".59" k4="-.59" result="base"/>
+      <feColorMatrix in="SourceGraphic" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.61 0" result="stripe"/>
+      <feBlend in="stripe" in2="base" mode="overlay"/>
+      <feComposite in2="SourceAlpha" operator="in"/>
+    </filter>
+    <filter id="pro-finish" x="-24" y="-24" width="385" height="177" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-color="white" result="paper"/>
+      <feMerge><feMergeNode in="paper"/><feMergeNode in="SourceGraphic"/></feMerge>
+      <feGaussianBlur stdDeviation="7.3" result="soft"/>
+      <feTurbulence type="fractalNoise" baseFrequency="4" numOctaves="1" stitchTiles="stitch" seed="0"/>
+      <feColorMatrix values="-0.12 0 0 0 1 -0.12 0 0 0 1 -0.12 0 0 0 1 0 0 0 0 1" result="grain"/>
+      <feComposite in="soft" in2="grain" operator="arithmetic" k1="1" result="textured"/>
+
+      <feComponentTransfer result="colored"><feFuncR type="table" tableValues="0.063 0.065 0.068 0.071 0.073 0.076 0.078 0.081 0.084 0.086 0.089 0.092 0.094 0.146 0.197 0.249 0.301 0.352 0.404 0.501 0.597 0.694 0.79 0.887 0.938 0.959 0.979 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"/><feFuncG type="table" tableValues="0.016 0.017 0.018 0.019 0.02 0.021 0.022 0.023 0.024 0.025 0.025 0.026 0.027 0.044 0.06 0.076 0.093 0.109 0.125 0.15 0.175 0.2 0.224 0.249 0.358 0.524 0.689 0.855 0.902 0.95 0.888 0.753 0.617 0.482 0.573 0.663 0.754 0.845 0.893 0.931 0.969 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"/><feFuncB type="table" tableValues="0.024 0.024 0.025 0.025 0.026 0.027 0.027 0.028 0.029 0.029 0.03 0.031 0.031 0.047 0.063 0.078 0.094 0.11 0.125 0.111 0.096 0.082 0.067 0.053 0.081 0.138 0.194 0.251 0.483 0.715 0.705 0.534 0.363 0.192 0.328 0.463 0.598 0.734 0.814 0.88 0.947 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"/></feComponentTransfer>
+    </filter>
+  </defs>
+  <g filter="url(#pro-finish)">
+    <use href="#pro-letters" fill="url(#pro-sweep)" filter="url(#pro-relief)"/>
+    <use href="#pro-letters" fill="url(#pro-reveal)"/>
+  </g>
+</svg>
